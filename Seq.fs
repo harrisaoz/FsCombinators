@@ -36,3 +36,13 @@ let anyPredicate (ps: ('a -> bool) seq): 'a option -> bool =
 //        match m with
 //        | Some x -> Seq.exists (fun p -> p x) ps
 //        | None -> false
+
+/// Assuming a directed, acyclic, rooted graph, recursively list all nodes,
+/// excluding the branches rooted at nodes for which the filterPredicate is false.
+let rec filteredPreOrder filterPredicate listChildren x =
+    seq {
+        if filterPredicate x then
+            yield x
+            for child in listChildren x do
+                yield! filteredPreOrder filterPredicate listChildren child
+    }
