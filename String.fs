@@ -26,3 +26,6 @@ let flatten labelSeparator (replacement: string) =
 
 let iequal (s1: string) (s2: string) =
     System.String.Equals (s1, s2, System.StringComparison.InvariantCultureIgnoreCase)
+
+let appendString (toAppend: string) (baseText: string) =
+    System.Text.StringBuilder(baseText).Append(toAppend).ToString()
