@@ -13,15 +13,16 @@ let endsWith: string -> string -> bool =
 let endsWithCI: string -> string -> bool =
     fun haystack needle -> haystack.ToLower().EndsWith(needle.ToLower())
 
+[<System.Obsolete("Use String.concat, since it achieves the same result while being more general")>]
 let join (glue: string) (parts: string[]) =
-    System.String.Join(glue, parts)
+    String.concat glue parts
 
 let split (separators: char[]) (whole: string) =
     whole.Split(separators)
 
 let flatten labelSeparator (replacement: string) =
     split (Array.singleton labelSeparator)
-    >> join replacement
+    >> String.concat replacement
 
 let iequal (s1: string) (s2: string) =
     System.String.Equals (s1, s2, System.StringComparison.InvariantCultureIgnoreCase)
