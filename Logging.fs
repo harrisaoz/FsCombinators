@@ -21,7 +21,7 @@ let formatLogDetail data: string =
     data
     |> Seq.map (fun datum -> $"[{string datum}]")
     |> Array.ofSeq
-    |> RString.join " "
+    |> String.concat " "
 
 let logCustomData prefix (Log log) (description: string) data: unit =
     match (formatLogDetail data) with
