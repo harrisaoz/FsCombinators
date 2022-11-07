@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFrameworks>net6.0;net48</TargetFrameworks>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PackageId>FsCombinators</PackageId>
-        <Version>0.4.1</Version>
+        <Version>0.4.2</Version>
         <Authors>Anthony Harris</Authors>
         <RepositoryUrl>https://github.com/harrisaoz/FsCombinators</RepositoryUrl>
     </PropertyGroup>
