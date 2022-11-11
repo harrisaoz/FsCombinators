@@ -1,4 +1,5 @@
-﻿module Combinators.String
+﻿[<Microsoft.FSharp.Core.RequireQualifiedAccess>]
+module FsCombinators.StringExtensions
 
 let contains: string -> string -> bool =
     fun haystack -> haystack.Contains
@@ -12,10 +13,6 @@ let endsWith: string -> string -> bool =
 
 let endsWithCI: string -> string -> bool =
     fun haystack needle -> haystack.ToLower().EndsWith(needle.ToLower())
-
-[<System.Obsolete("Use String.concat, since it achieves the same result while being more general")>]
-let join (glue: string) (parts: string[]) =
-    String.concat glue parts
 
 let split (separators: char[]) (whole: string) =
     whole.Split(separators)

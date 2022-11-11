@@ -1,4 +1,4 @@
-﻿module Combinators.Standard
+﻿module FsCombinators.Core
 
 /// "reverse" composition. B = (<<)
 let inline B f g x =
@@ -40,3 +40,9 @@ let inline W x y = x y y
 /// Generally of little practical value due to the mental challenge of deciphering any usage.
 /// Search the Web for y-combinator if you want to know more.
 let rec Y f x = f (Y f) x
+
+/// Apply the first function to the results of
+/// applying the second and third functions to the given value.
+/// Point-free definition: Q (Q B Q) (T S)
+let inline applyToBoth f g h x =
+    f (g x) (h x)
