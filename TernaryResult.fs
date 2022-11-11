@@ -1,13 +1,11 @@
-﻿module Combinators.TernaryResult
+﻿module FsCombinators.TernaryResult
 
 type TernaryResult<'a, 'Error> =
     | Ok of 'a
     | Ignore
     | Error of 'Error
 
-open FSharpx.Collections
 open Combinators.Standard
-module L = LazyList
 
 let inline bind2 v f c =
     match c with
@@ -42,13 +40,13 @@ let shouldIgnore tr =
 
 let SS f g h x = f (g x) (h x)
 
-let groupResult xs: TernaryResult<LazyList<'a>, 'b> =
+let groupResult (xs: TernaryResult<'a, 'b> seq) : TernaryResult<'a seq, 'b> =
     let folder acc =
         let accBind =
             SS bind2
-                (Seq.singleton >> L.ofSeq >> Ok)
-                (Seq.singleton >> L.ofSeq >> C L.append >> B Ok)
+                (Seq.singleton >> Ok)
+                (Seq.singleton >> C Seq.append >> B Ok)
 
         S bind2 (C accBind) acc
 
-    L.fold folder Ignore xs
+    Seq.fold folder Ignore xs

@@ -3,9 +3,10 @@
         <TargetFrameworks>net6.0;net48</TargetFrameworks>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PackageId>FsCombinators</PackageId>
-        <Version>0.4.2</Version>
+        <Version>0.5.0</Version>
         <Authors>Anthony Harris</Authors>
         <RepositoryUrl>https://github.com/harrisaoz/FsCombinators</RepositoryUrl>
+        <RootNamespace>FsCombinators</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,10 +16,9 @@
         <Compile Include="TernaryResult.fs" />
         <Compile Include="Boolean.fs" />
         <Compile Include="Pair.fs" />
-        <Compile Include="Logging.fs" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="FSharpx.Collections" Version="3.0.1" />
+      <PackageReference Update="FSharp.Core" Version="4.7.2" />
     </ItemGroup>
 </Project>
