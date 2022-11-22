@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>FsCombinators</PackageId>
-    <Version>0.7.0</Version>
+    <Version>0.8.0</Version>
     <Authors>Anthony Harris</Authors>
     <RepositoryUrl>https://github.com/harrisaoz/FsCombinators</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -15,5 +15,7 @@
     <Compile Include="ExtraTypes.fs" />
     <Compile Include="BooleanExtensions.fs" />
     <Compile Include="Tuple2.fs" />
+    <Compile Include="ResultExtensions.fs" />
+    <Compile Include="OptionExtensions.fs" />
   </ItemGroup>
 </Project>
