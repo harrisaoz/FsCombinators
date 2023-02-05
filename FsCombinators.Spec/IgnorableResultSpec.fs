@@ -63,7 +63,7 @@ let ``groupResult: there should be as many items in the Ok sequence as there are
 
     IgnorableResult.groupResult nonErrors
     |> function
-        | IgnorableResult.Ok ternaryResultValue ->
-            Seq.length ternaryResultValue = (Seq.length okOnly)
+        | IgnorableResult.Ok ignorableResultValue ->
+            Seq.length ignorableResultValue = (Seq.length okOnly)
         | _ ->
             false

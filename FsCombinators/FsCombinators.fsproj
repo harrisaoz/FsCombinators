@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>FsCombinators</PackageId>
-    <Version>0.8.0</Version>
+    <Version>0.8.1</Version>
     <Authors>Anthony Harris</Authors>
     <RepositoryUrl>https://github.com/harrisaoz/FsCombinators</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
