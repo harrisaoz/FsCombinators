@@ -50,7 +50,7 @@ module IgnorableResult =
     /// The result represents something to be ignored.
     let shouldIgnore tr =
         match tr with
-        | Ignore _ -> true
+        | Ignore -> true
         | _ -> false
 
     /// The result represents an Error, which is in some way described by a corresponding error value.
