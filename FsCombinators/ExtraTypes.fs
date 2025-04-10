@@ -9,6 +9,9 @@ type IgnorableResult<'a, 'Error> =
 
 module IgnorableResult =
     /// Similar to Result.bind, except that Ignore may be transformed.
+    /// v: the replacement value in case the subject is Ignore
+    /// f: the function to apply to the value of the subject in case the subject is Ok
+    /// subject: the IgnorableResult to bind
     let inline bind2
         (v: IgnorableResult<'a, 'b>)
         (f: 'c -> IgnorableResult<'a, 'b>)
