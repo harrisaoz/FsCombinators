@@ -3,9 +3,9 @@
 [<StructuralEquality; StructuralComparison>]
 [<Struct>]
 type IgnorableResult<'a, 'Error> =
-    | Ok of TernaryResultValue:'a
+    | Ok of TernaryResultValue: 'a
     | Ignore
-    | Error of TernaryErrorValue:'Error
+    | Error of TernaryErrorValue: 'Error
 
 module IgnorableResult =
     /// Similar to Result.bind, except that Ignore may be transformed.
@@ -14,11 +14,11 @@ module IgnorableResult =
         (f: 'c -> IgnorableResult<'a, 'b>)
         (c: IgnorableResult<'c, 'b>)
         =
-            match c with
-            | Ok x -> f x
-            | Ignore -> v
-            // | err -> err
-            | Error e -> Error e
+        match c with
+        | Ok x -> f x
+        | Ignore -> v
+        // | err -> err
+        | Error e -> Error e
 
     /// Akin to Result.bind.
     /// Assume that Ignore passes through unchanged.
