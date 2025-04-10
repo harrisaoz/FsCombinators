@@ -73,13 +73,16 @@ module IgnorableResult =
     /// 3. If there are any Ok elements and no Error elements in the sequence,
     ///    then the result is Ok
     ///    and the sequence of values is the values of the Ok elements from the input sequence.
-    let groupResult (xs: IgnorableResult<'a, 'b> seq) : IgnorableResult<'a seq, 'b> =
+    let groupResultGeneric (singleton, append, fold) xs : IgnorableResult<'aSeq, 'b> =
         let folder =
-            let accBind =
-                applyToBoth bind2
-                    (Seq.singleton >> Ok)
-                    (Seq.singleton >> C Seq.append >> B Ok)
+            let accBind = applyToBoth bind2 (singleton >> Ok) (singleton >> C append >> B Ok)
 
             S bind2 (C accBind)
 
-        Seq.fold folder Ignore xs
+        fold folder Ignore xs
+
+    let groupResultSeq xs =
+        groupResultGeneric (Seq.singleton, Seq.append, Seq.fold) xs
+
+    let groupResult (xs: IgnorableResult<'a, 'b> seq) : IgnorableResult<'a seq, 'b> =
+        groupResultSeq xs
