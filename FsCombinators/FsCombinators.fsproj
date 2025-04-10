@@ -17,5 +17,6 @@
     <Compile Include="Tuple2.fs" />
     <Compile Include="ResultExtensions.fs" />
     <Compile Include="OptionExtensions.fs" />
+    <Compile Include="Exckit.fs" />
   </ItemGroup>
 </Project>
