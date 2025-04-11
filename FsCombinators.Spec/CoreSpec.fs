@@ -2,6 +2,7 @@ module FsCombinators.Core.Spec
 
 open FsCheck
 open FsCheck.Xunit
+open FsCheck.FSharp
 
 open FsCombinators.Core
 
