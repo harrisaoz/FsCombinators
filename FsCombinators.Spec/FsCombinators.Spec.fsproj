@@ -9,6 +9,7 @@
     <ItemGroup>
         <Compile Include="CoreSpec.fs"/>
         <Compile Include="IgnorableResultSpec.fs"/>
+        <Compile Include="SeqExtensionSpec.fs"/>
         <Compile Include="Program.fs"/>
     </ItemGroup>
 
