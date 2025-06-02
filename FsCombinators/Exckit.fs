@@ -60,6 +60,7 @@ let tryFallible (onError, onOk) isFatal isVexing isExogenous fallibleFunction =
     with ex ->
         if isFatal ex then
             System.Environment.FailFast(ex.Message)
+            // unreachable, since FailFast always exits immediately
             reraise ()
         elif isVexing ex then
             onError ex
