@@ -70,6 +70,45 @@ let tryFallible (onError, onOk) isFatal isVexing isExogenous fallibleFunction =
         else
             reraise ()
 
+type VexingExceptionHandler<'a> = System.Exception -> 'a
+type ExogenousExceptionHandler<'a> = System.Exception -> 'a
+
+type GetExceptionCategory = System.Exception -> ExceptionCategory
+
+type ExceptionHandlers<'a> =
+    | ExceptionHandlers of VexingExceptionHandler<'a> * ExogenousExceptionHandler<'a>
+
+module CategoryMatchBased =
+    let tryFallible
+        onOk
+        (ExceptionHandlers(onVexing, onExogenous))
+        (getExceptionCategory: GetExceptionCategory)
+        (fallibleFunction: unit -> 'b)
+        =
+        try
+            fallibleFunction () |> onOk
+        with ex ->
+            match (getExceptionCategory ex) with
+            | Fatal cause ->
+                System.Environment.FailFast(cause.Message)
+                // unreachable, since FailFast always exits immediately
+                reraise ()
+            | Vexing cause -> onVexing cause
+            | Exogenous cause -> onExogenous cause
+            | Boneheaded _ -> reraise ()
+
+module ResultFacade =
+    let tryFallible
+        (exceptionHandlers: ExceptionHandlers<Result<'a, System.Exception>>)
+        (getExceptionCategory: GetExceptionCategory)
+        (fallibleFunction: unit -> 'a)
+        =
+        CategoryMatchBased.tryFallible
+            Result.Ok
+            exceptionHandlers
+            getExceptionCategory
+            fallibleFunction
+
 module StandardFatals =
     ///
     /// In many cases, the following exceptions can be considered fatal:
