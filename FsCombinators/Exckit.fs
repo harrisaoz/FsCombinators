@@ -2,7 +2,7 @@
 
 ///
 /// From https://ericlippert.com/2008/09/10/vexing-exceptions/
-/// 
+///
 /// "Fatal exceptions are not your fault, you cannot prevent them, and you cannot sensibly
 /// clean up from them.  They almost always happen because the process is deeply diseased
 /// and is about to be put out of its misery."
@@ -47,7 +47,7 @@
 /// functions which only express a limited part of the full range of possible values as their
 /// return type.  Instead, the full range of values should be encompassed by the return type -
 /// the typical approach is to use a discriminated union.
-/// 
+///
 type ExceptionCategory =
     | Fatal of cause: System.Exception // runtime environment failure, possibly unrecoverable
     | Boneheaded of cause: System.Exception // deterministic function, incorrect usage
