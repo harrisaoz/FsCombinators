@@ -26,7 +26,8 @@
 /// Fatal (any function, correct usage, runtime environment failure, possibly unrecoverable):
 /// These are failures outside application control; typically non-deterministic.  Failing
 /// fast is often the best response to encountering these. Exceptions commonly considered to be
-/// fatal include out of memory, stack overflow, access violation and thread aborted.
+/// fatal include out of memory, stack overflow, access violation and thread aborted.  See
+/// the matched exceptions in StandardFatals.isExceptionFatal.
 ///
 /// Boneheaded (deterministic function, incorrect usage):
 /// These are failures that are deterministic and entirely the fault of the author
@@ -70,6 +71,15 @@ let tryFallible (onError, onOk) isFatal isVexing isExogenous fallibleFunction =
             reraise ()
 
 module StandardFatals =
+    ///
+    /// In many cases, the following exceptions can be considered fatal:
+    /// - System.OutOfMemoryException
+    /// - System.StackOverflowException
+    /// - System.AccessViolationException
+    /// - System.AppDomainUnloadedException
+    /// - System.BadImageFormatException
+    /// - System.Threading.ThreadAbortException
+    ///
     let isExceptionFatal (maybeFatal: System.Exception) =
         match maybeFatal with
         | :? System.OutOfMemoryException as _f1 -> true
