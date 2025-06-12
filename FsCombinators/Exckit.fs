@@ -99,7 +99,7 @@ module CategoryMatchBased =
 
 module ResultFacade =
     let tryFallible
-        (exceptionHandlers: ExceptionHandlers<Result<'a, System.Exception>>)
+        (exceptionHandlers: ExceptionHandlers<Result<'a, 'b>>)
         (getExceptionCategory: GetExceptionCategory)
         (fallibleFunction: unit -> 'a)
         =
