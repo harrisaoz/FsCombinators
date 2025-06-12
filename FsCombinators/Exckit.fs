@@ -129,6 +129,12 @@ module StandardFatals =
         | :? System.Threading.ThreadAbortException as _f6 -> true
         | _ -> false
 
+    let getExceptionCategory (categoriseNonFatal: GetExceptionCategory) ex : ExceptionCategory =
+        if isExceptionFatal ex then
+            Fatal ex
+        else
+            categoriseNonFatal ex
+
 module StandardVexing =
     let isVexing (maybeVexing: System.Exception) =
         match maybeVexing with
