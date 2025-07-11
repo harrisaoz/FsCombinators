@@ -2,8 +2,9 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <PackageId>FsCombinators</PackageId>
-        <Version>0.11.1</Version>
+        <Version>0.11.2</Version>
         <Authors>Anthony Harris</Authors>
+        <Company>Clearflow</Company>
         <RepositoryUrl>https://github.com/harrisaoz/FsCombinators</RepositoryUrl>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
