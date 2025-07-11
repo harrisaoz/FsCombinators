@@ -7,7 +7,12 @@
         <Company>Clearflow</Company>
         <RepositoryUrl>https://github.com/harrisaoz/FsCombinators</RepositoryUrl>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath="/"/>
+    </ItemGroup>
 
     <ItemGroup>
         <Compile Include="Core.fs"/>
@@ -19,6 +24,5 @@
         <Compile Include="ResultExtensions.fs"/>
         <Compile Include="OptionExtensions.fs"/>
         <Compile Include="Exckit.fs"/>
-        <Content Include="README.md" />
     </ItemGroup>
 </Project>
