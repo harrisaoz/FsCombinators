@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <PackageId>FsCombinators</PackageId>
-        <Version>0.11.2</Version>
+        <Version>0.11.3</Version>
         <Authors>Anthony Harris</Authors>
         <Company>Clearflow</Company>
         <RepositoryUrl>https://github.com/harrisaoz/FsCombinators</RepositoryUrl>
@@ -19,5 +19,6 @@
         <Compile Include="ResultExtensions.fs"/>
         <Compile Include="OptionExtensions.fs"/>
         <Compile Include="Exckit.fs"/>
+        <Content Include="README.md" />
     </ItemGroup>
 </Project>
